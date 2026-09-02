@@ -1,0 +1,205 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 730" width="100%" height="100%" style="background:#0b0f19; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161e2e" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#dc2626" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    <linearGradient id="telegramGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#229ED9" />
+      <stop offset="100%" stop-color="#0088cc" />
+    </linearGradient>
+    <linearGradient id="netBus" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="50%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+
+    <!-- Markers -->
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#ef4444" />
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#3b82f6" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981" />
+    </marker>
+    <marker id="arrowTelegram" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#229ED9" />
+    </marker>
+  </defs>
+
+  <!-- ==================== HEADER ==================== -->
+  <text x="450" y="38" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="700" letter-spacing="0.5">ARQUITETURA DO LABORATÓRIO (SOC HOMELAB)</text>
+  <text x="450" y="58" text-anchor="middle" fill="#64748b" font-size="12">Topologia de Rede Isolada · Detecção NIDS/SIEM &amp; Alertas em Tempo Real</text>
+
+  <!-- ==================== ATACANTE CARD (TOP) ==================== -->
+  <g transform="translate(300, 75)" filter="url(#shadow)">
+    <rect width="300" height="72" rx="10" fill="url(#cardBg)" stroke="#ef4444" stroke-width="1.5" />
+    <rect x="0" y="0" width="300" height="4" rx="2" fill="url(#redGrad)" />
+    
+    <text x="20" y="28" fill="#ef4444" font-size="10.5" font-weight="700" letter-spacing="1">ZONA OFENSIVA · ATACANTE</text>
+    <text x="20" y="48" fill="#f8fafc" font-size="15" font-weight="700">VM-Atacante (Kali Linux)</text>
+    
+    <!-- IP Badge -->
+    <rect x="195" y="20" width="85" height="22" rx="6" fill="#ef4444" fill-opacity="0.15" stroke="#ef4444" stroke-width="1" />
+    <text x="237" y="35" text-anchor="middle" fill="#fca5a5" font-size="11" font-family="monospace" font-weight="600">10.0.1.100</text>
+    
+    <text x="20" y="64" fill="#94a3b8" font-size="10.5">Ferramentas: Nmap, Hydra, Hping3, cURL</text>
+  </g>
+
+  <!-- Arrow from Attacker down to Network Bus -->
+  <path d="M 450 147 L 450 185" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6,4" marker-end="url(#arrowRed)" />
+  <rect x="360" y="155" width="180" height="18" rx="4" fill="#1e1b2e" stroke="#ef4444" stroke-width="1" />
+  <text x="450" y="168" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="600">Tráfego de Ataque (SYN, SSH, RDP)</text>
+
+  <!-- ==================== NETWORK BUS (VMnet2) ==================== -->
+  <g transform="translate(60, 192)" filter="url(#shadow)">
+    <rect width="780" height="42" rx="8" fill="url(#netBus)" stroke="#475569" stroke-width="1.5" />
+    <circle cx="20" cy="21" r="5" fill="#38bdf8" />
+    <text x="35" y="25" fill="#f8fafc" font-size="13" font-weight="700">Rede Isolada do Laboratório (VMware VMnet2)</text>
+    <rect x="650" y="10" width="115" height="22" rx="5" fill="#0f172a" stroke="#64748b" stroke-width="1" />
+    <text x="707" y="25" text-anchor="middle" fill="#38bdf8" font-size="11" font-family="monospace" font-weight="600">10.0.1.0/24</text>
+  </g>
+
+  <!-- Connection Lines from Bus to Endpoints/Sensor -->
+  <path d="M 190 234 L 190 270" stroke="#f97316" stroke-width="2" marker-end="url(#arrowRed)" />
+  <path d="M 450 234 L 450 270" stroke="#10b981" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowGreen)" />
+  <path d="M 710 234 L 710 270" stroke="#0ea5e9" stroke-width="2" marker-end="url(#arrowRed)" />
+
+  <!-- ==================== MIDDLE LAYER (ENDPOINTS & SENSOR) ==================== -->
+
+  <!-- CARD 1: Vítima Linux -->
+  <g transform="translate(60, 275)" filter="url(#shadow)">
+    <rect width="250" height="125" rx="10" fill="url(#cardBg)" stroke="#f97316" stroke-width="1.5" />
+    <rect x="0" y="0" width="250" height="4" rx="2" fill="url(#orangeGrad)" />
+    
+    <text x="16" y="22" fill="#f97316" font-size="10" font-weight="700" letter-spacing="0.5">ALVO · LINUX SERVER</text>
+    <text x="16" y="42" fill="#f8fafc" font-size="14" font-weight="700">VM-Vítima (Ubuntu)</text>
+    
+    <!-- IP Badge -->
+    <rect x="150" y="14" width="84" height="20" rx="5" fill="#f97316" fill-opacity="0.15" stroke="#f97316" stroke-width="1" />
+    <text x="192" y="28" text-anchor="middle" fill="#fdba74" font-size="10.5" font-family="monospace" font-weight="600">10.0.1.200</text>
+    
+    <!-- Services -->
+    <text x="16" y="65" fill="#94a3b8" font-size="10">• Apache HTTP Server (Porta 80)</text>
+    <text x="16" y="81" fill="#94a3b8" font-size="10">• OpenSSH Server (Porta 22)</text>
+    <text x="16" y="97" fill="#94a3b8" font-size="10">• vsftpd FTP Server (Porta 21)</text>
+    <text x="16" y="115" fill="#38bdf8" font-size="10" font-weight="600">Agente: auth.log &amp; syslog</text>
+  </g>
+
+  <!-- CARD 2: Sensor Suricata -->
+  <g transform="translate(325, 275)" filter="url(#shadow)">
+    <rect width="250" height="125" rx="10" fill="url(#cardBg)" stroke="#10b981" stroke-width="1.5" />
+    <rect x="0" y="0" width="250" height="4" rx="2" fill="url(#greenGrad)" />
+    
+    <text x="16" y="22" fill="#10b981" font-size="10" font-weight="700" letter-spacing="0.5">INSPEÇÃO · NIDS</text>
+    <text x="16" y="42" fill="#f8fafc" font-size="14" font-weight="700">VM-Sensor (Suricata)</text>
+    
+    <!-- IP Badge -->
+    <rect x="156" y="14" width="78" height="20" rx="5" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1" />
+    <text x="195" y="28" text-anchor="middle" fill="#6ee7b7" font-size="10.5" font-family="monospace" font-weight="600">10.0.1.10</text>
+    
+    <!-- Description -->
+    <text x="16" y="65" fill="#94a3b8" font-size="10">• Captura em Modo Promíscuo</text>
+    <text x="16" y="81" fill="#94a3b8" font-size="10">• 68.000+ Regras de Assinatura</text>
+    <text x="16" y="97" fill="#94a3b8" font-size="10">• Regras Customizadas (SID 100000x)</text>
+    <text x="16" y="115" fill="#38bdf8" font-size="10" font-weight="600">Agente: eve.json (Alertas)</text>
+  </g>
+
+  <!-- CARD 3: Vítima Windows -->
+  <g transform="translate(590, 275)" filter="url(#shadow)">
+    <rect width="250" height="125" rx="10" fill="url(#cardBg)" stroke="#0ea5e9" stroke-width="1.5" />
+    <rect x="0" y="0" width="250" height="4" rx="2" fill="url(#blueGrad)" />
+    
+    <text x="16" y="22" fill="#0ea5e9" font-size="10" font-weight="700" letter-spacing="0.5">ALVO · WINDOWS ENDPOINT</text>
+    <text x="16" y="42" fill="#f8fafc" font-size="14" font-weight="700">VM-Vítima-Windows</text>
+    
+    <!-- IP Badge -->
+    <rect x="150" y="14" width="84" height="20" rx="5" fill="#0ea5e9" fill-opacity="0.15" stroke="#0ea5e9" stroke-width="1" />
+    <text x="192" y="28" text-anchor="middle" fill="#7dd3fc" font-size="10.5" font-family="monospace" font-weight="600">10.0.1.201</text>
+    
+    <!-- Services -->
+    <text x="16" y="65" fill="#94a3b8" font-size="10">• Remote Desktop RDP (Porta 3389)</text>
+    <text x="16" y="81" fill="#94a3b8" font-size="10">• File Sharing SMB (Porta 445)</text>
+    <text x="16" y="97" fill="#94a3b8" font-size="10">• Windows Security Event Logs</text>
+    <text x="16" y="115" fill="#38bdf8" font-size="10" font-weight="600">Agente: Event ID 4625 / 4624</text>
+  </g>
+
+  <!-- ==================== TELEMETRY FLOW DOWN TO SIEM ==================== -->
+  <path d="M 185 400 L 185 435 L 400 435 L 400 455" stroke="#3b82f6" stroke-width="1.5" fill="none" marker-end="url(#arrowBlue)" />
+  <path d="M 450 400 L 450 455" stroke="#3b82f6" stroke-width="1.5" fill="none" marker-end="url(#arrowBlue)" />
+  <path d="M 715 400 L 715 435 L 500 435 L 500 455" stroke="#3b82f6" stroke-width="1.5" fill="none" marker-end="url(#arrowBlue)" />
+
+  <rect x="330" y="425" width="240" height="18" rx="4" fill="#0f172a" stroke="#3b82f6" stroke-width="1" />
+  <text x="450" y="438" text-anchor="middle" fill="#93c5fd" font-size="9.5" font-weight="600">Telemetria Criptografada · Porta 1514 TLS / AES</text>
+
+  <!-- ==================== SIEM CARD ==================== -->
+  <g transform="translate(180, 465)" filter="url(#shadow)">
+    <rect width="540" height="95" rx="10" fill="url(#cardBg)" stroke="#8b5cf6" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="4" rx="2" fill="url(#purpleGrad)" />
+    
+    <text x="24" y="24" fill="#a78bfa" font-size="10.5" font-weight="700" letter-spacing="0.5">GESTÃO CENTRAL &amp; CORRELAÇÃO · SIEM / XDR</text>
+    <text x="24" y="46" fill="#f8fafc" font-size="16" font-weight="700">VM-SIEM (Wazuh All-in-One)</text>
+    
+    <!-- IP Badge -->
+    <rect x="425" y="16" width="90" height="22" rx="5" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-width="1" />
+    <text x="470" y="31" text-anchor="middle" fill="#c4b5fd" font-size="11" font-family="monospace" font-weight="600">10.0.1.50</text>
+    
+    <!-- 3 Internal Engines -->
+    <g transform="translate(24, 58)">
+      <rect width="155" height="24" rx="4" fill="#1e293b" />
+      <text x="77" y="16" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="600">Manager (Regras XML)</text>
+    </g>
+    <g transform="translate(190, 58)">
+      <rect width="155" height="24" rx="4" fill="#1e293b" />
+      <text x="267" y="16" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="600">Indexer (OpenSearch)</text>
+    </g>
+    <g transform="translate(355, 58)">
+      <rect width="160" height="24" rx="4" fill="#1e293b" />
+      <text x="435" y="16" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="600">Dashboard (Porta 443)</text>
+    </g>
+  </g>
+
+  <!-- Arrow down from SIEM to Telegram -->
+  <path d="M 450 560 L 450 595" stroke="#229ED9" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowTelegram)" />
+  <rect x="365" y="568" width="170" height="16" rx="3" fill="#0f172a" stroke="#229ED9" stroke-width="1" />
+  <text x="450" y="580" text-anchor="middle" fill="#7dd3fc" font-size="9" font-weight="600">Alertas Críticos (Nível 10+)</text>
+
+  <!-- ==================== TELEGRAM NOTIFICATION CARD (BOTTOM) ==================== -->
+  <g transform="translate(250, 605)" filter="url(#shadow)">
+    <rect width="400" height="72" rx="10" fill="url(#cardBg)" stroke="#229ED9" stroke-width="1.5" />
+    <rect x="0" y="0" width="400" height="4" rx="2" fill="url(#telegramGrad)" />
+    
+    <text x="20" y="26" fill="#38bdf8" font-size="10.5" font-weight="700" letter-spacing="0.5">NOTIFICAÇÃO PUSH · TEMPO REAL</text>
+    <text x="20" y="47" fill="#f8fafc" font-size="14.5" font-weight="700">Bot do Telegram (Wazuh API Integration)</text>
+    <text x="20" y="63" fill="#94a3b8" font-size="10">Disparo automático de mensagens para incidentes de alta severidade</text>
+  </g>
+
+</svg>

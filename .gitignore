@@ -1,0 +1,23 @@
+﻿# ISOs e discos de VM
+*.iso
+*.ova
+*.vmdk
+*.vdi
+*.vmx
+*.nvram
+*.log
+
+# Credenciais
+*.pem
+*.key
+.env
+passwords.txt
+
+# PCAPs grandes
+*.pcap
+
+# Cache
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

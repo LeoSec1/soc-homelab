@@ -1,0 +1,81 @@
+﻿<!-- ============================================================ -->
+<!-- Regras de correlacao customizadas do Wazuh para o SOC Homelab -->
+<!-- ============================================================ -->
+
+<group name="local,suricata,soc-homelab,">
+
+  <!-- Alerta generico do Suricata capturado pelo Wazuh -->
+  <rule id="100001" level="3">
+    <if_sid>86601</if_sid>
+    <description>SOC-HOMELAB: Alerta do Suricata capturado</description>
+    <group>ids,suricata,</group>
+  </rule>
+
+  <!-- Varredura de rede detectada pelo Suricata (SID 1000001) -->
+  <rule id="100010" level="8">
+    <if_sid>86601</if_sid>
+    <field name="alert.signature_id">1000001</field>
+    <description>SOC-HOMELAB: Varredura SYN detectada na rede</description>
+    <mitre>
+      <id>T1046</id>
+    </mitre>
+    <group>ids,recon,</group>
+  </rule>
+
+  <!-- Tentativa de brute force SSH detectada pelo Suricata (SID 1000002) -->
+  <rule id="100020" level="10">
+    <if_sid>86601</if_sid>
+    <field name="alert.signature_id">1000002</field>
+    <description>SOC-HOMELAB: Tentativa de brute force SSH detectada</description>
+    <mitre>
+      <id>T1110</id>
+    </mitre>
+    <group>ids,brute_force,</group>
+  </rule>
+
+  <!-- ICMP com payload anomalo (SID 1000003) -->
+  <rule id="100030" level="6">
+    <if_sid>86601</if_sid>
+    <field name="alert.signature_id">1000003</field>
+    <description>SOC-HOMELAB: Pacote ICMP com payload anomalo</description>
+    <mitre>
+      <id>T1095</id>
+    </mitre>
+    <group>ids,anomaly,</group>
+  </rule>
+
+  <!-- Login anonimo FTP (SID 1000004) -->
+  <rule id="100040" level="5">
+    <if_sid>86601</if_sid>
+    <field name="alert.signature_id">1000004</field>
+    <description>SOC-HOMELAB: Login anonimo FTP detectado</description>
+    <mitre>
+      <id>T1078</id>
+    </mitre>
+    <group>ids,suspicious_login,</group>
+  </rule>
+
+  <!-- Tentativa de Shellshock (SID 1000005) -->
+  <rule id="100050" level="14">
+    <if_sid>86601</if_sid>
+    <field name="alert.signature_id">1000005</field>
+    <description>SOC-HOMELAB: Tentativa de exploit Shellshock via HTTP</description>
+    <mitre>
+      <id>T1190</id>
+    </mitre>
+    <group>ids,exploit,web,</group>
+  </rule>
+
+  <!-- Correlacao: Scan + Brute Force do mesmo IP em 10 minutos -->
+  <rule id="100021" level="14" timeframe="600">
+    <if_matched_sid>100010</if_matched_sid>
+    <same_source_ip />
+    <description>SOC-HOMELAB: Cadeia de ataque detectada (Scan + Brute Force do mesmo IP)</description>
+    <mitre>
+      <id>T1046</id>
+      <id>T1110</id>
+    </mitre>
+    <group>ids,attack_chain,</group>
+  </rule>
+
+</group>
