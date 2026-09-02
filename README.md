@@ -1,6 +1,6 @@
 <div align="center">
 
-# Laboratório de Detecção de Intrusão
+# SOC Homelab: Detecção de Intrusão com Suricata e Wazuh
 
 **Suricata · Wazuh · Blue Team · Engenharia de Detecção**
 
@@ -17,8 +17,6 @@ O ambiente foi construído em uma infraestrutura virtualizada e isolada, compost
 
 [Arquitetura](#arquitetura-do-laboratório) · [Estado Operacional](#estado-operacional) · [Ambiente](#ambiente-monitorado) · [Da Simulação ao Alerta](#da-simulação-ao-alerta) · [Casos de Detecção](#casos-de-detecção) · [Regras](#regras-de-detecção) · [Documentação](#documentação-técnica)
 
-> **Aviso de Uso Ético e Ambiente Autorizado**  
-> Todas as simulações, regras e análises documentadas neste repositório foram executadas exclusivamente em ambiente de laboratório virtualizado, controlado e isolado (VMware VMnet2, sem conexão externa). As técnicas demonstradas têm finalidade estritamente educacional e de pesquisa defensiva.
 
 ---
 
