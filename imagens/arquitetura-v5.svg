@@ -1,0 +1,266 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050">
+  <defs>
+    <style>
+      text { font-family: "Segoe UI", "DejaVu Sans", Arial, sans-serif; }
+      .title { font-size: 22px; font-weight: 700; fill: #212121; }
+      .subtitle { font-size: 13px; fill: #616161; }
+      .vm-title { font-size: 12px; font-weight: 700; fill: #ffffff; }
+      .vm-body { font-size: 11px; fill: #212121; }
+      .vm-body-sm { font-size: 10px; fill: #424242; }
+      .vm-footer { font-size: 10px; font-weight: 600; fill: #ffffff; }
+      .label { font-size: 11px; font-weight: 600; }
+      .label-sm { font-size: 10px; }
+      .label-xs { font-size: 9px; fill: #757575; }
+      .legend-text { font-size: 10px; fill: #424242; }
+      .spec-title { font-size: 12px; font-weight: 700; fill: #424242; }
+      .spec-body { font-size: 10px; fill: #616161; }
+      .footer-text { font-size: 9px; fill: #9e9e9e; font-style: italic; }
+      .card-title { font-size: 11px; font-weight: 700; }
+      .card-body { font-size: 10px; fill: #424242; }
+      .note { font-size: 9px; fill: #9e9e9e; font-style: italic; }
+    </style>
+  </defs>
+
+  <!-- Fundo -->
+  <rect width="1600" height="1050" fill="#fafafa"/>
+
+  <!-- Título e subtítulo -->
+  <text x="800" y="38" text-anchor="middle" class="title">HOME SOC LAB — ARQUITETURA DE DETECÇÃO E MONITORAMENTO</text>
+  <text x="800" y="62" text-anchor="middle" class="subtitle">Suricata NIDS + Wazuh SIEM | Rede Isolada VMnet2 | VMware Workstation Pro</text>
+  <line x1="180" y1="74" x2="1420" y2="74" stroke="#bdbdbd" stroke-width="1"/>
+
+  <!-- ============================================================ -->
+  <!-- CONTAINER VMnet2                                              -->
+  <!-- ============================================================ -->
+  <rect x="30" y="78" width="1300" height="700" rx="10" ry="10" fill="none" stroke="#546e7a" stroke-width="2" stroke-dasharray="8,6"/>
+  <text x="50" y="100" font-size="12" font-weight="700" fill="#546e7a">VMWARE VMNET2 — HOST-ONLY (SEM DHCP) — 10.0.1.0/24</text>
+
+  <!-- ============================================================ -->
+  <!-- VMs                                                           -->
+  <!-- ============================================================ -->
+
+  <!-- VM-ATACANTE -->
+  <g id="vm-atacante">
+    <rect x="80" y="120" width="270" height="250" rx="8" ry="8" fill="#ffffff" stroke="#1b5e20" stroke-width="2.5"/>
+    <rect x="80" y="120" width="270" height="34" rx="8" ry="8" fill="#1b5e20"/>
+    <rect x="80" y="146" width="270" height="8" fill="#1b5e20"/>
+    <text x="215" y="142" text-anchor="middle" class="vm-title">VM-ATACANTE</text>
+    <text x="92" y="172" class="vm-body" font-weight="700">IP: 10.0.1.100</text>
+    <text x="92" y="189" class="vm-body-sm">Kali Linux 2024.x</text>
+    <line x1="92" y1="198" x2="338" y2="198" stroke="#1b5e20" stroke-width="1" opacity="0.3"/>
+    <text x="102" y="215" class="vm-body-sm">• Nmap — descoberta controlada</text>
+    <text x="102" y="232" class="vm-body-sm">• Hydra — simulações de autenticação</text>
+    <text x="102" y="249" class="vm-body-sm">• cURL — testes web autorizados</text>
+    <text x="102" y="266" class="vm-body-sm">• Hping3 — geração de tráfego ICMP</text>
+    <rect x="80" y="334" width="270" height="36" rx="8" ry="8" fill="#1b5e20" opacity="0.9"/>
+    <text x="215" y="357" text-anchor="middle" class="vm-footer">Simulação controlada</text>
+  </g>
+
+  <!-- VM-SENSOR -->
+  <g id="vm-sensor">
+    <rect x="445" y="120" width="270" height="250" rx="8" ry="8" fill="#ffffff" stroke="#e65100" stroke-width="2.5"/>
+    <rect x="445" y="120" width="270" height="34" rx="8" ry="8" fill="#e65100"/>
+    <rect x="445" y="146" width="270" height="8" fill="#e65100"/>
+    <text x="580" y="142" text-anchor="middle" class="vm-title">VM-SENSOR</text>
+    <text x="457" y="172" class="vm-body" font-weight="700">IP: 10.0.1.10</text>
+    <text x="457" y="189" class="vm-body-sm">Ubuntu Server 22.04 LTS</text>
+    <line x1="457" y1="198" x2="703" y2="198" stroke="#e65100" stroke-width="1" opacity="0.3"/>
+    <text x="467" y="215" class="vm-body-sm">• Suricata 7.x</text>
+    <text x="467" y="232" class="vm-body-sm">• Interface: ens34</text>
+    <text x="467" y="249" class="vm-body-sm">• AF_PACKET / Modo promíscuo</text>
+    <text x="467" y="266" class="vm-body-sm">• Captura passiva</text>
+    <text x="467" y="283" class="vm-body-sm">• Wazuh Agent</text>
+    <text x="467" y="300" class="vm-body-sm">• Eventos: /var/log/suricata/eve.json</text>
+    <rect x="445" y="334" width="270" height="36" rx="8" ry="8" fill="#e65100" opacity="0.9"/>
+    <text x="580" y="357" text-anchor="middle" class="vm-footer">Sensor NIDS + coleta de telemetria</text>
+    <text x="580" y="383" text-anchor="middle" class="note">Captura condicionada ao modo promíscuo do VMware e à visibilidade na VMnet2</text>
+  </g>
+
+  <!-- VM-SIEM -->
+  <g id="vm-siem">
+    <rect x="810" y="120" width="270" height="250" rx="8" ry="8" fill="#ffffff" stroke="#1a237e" stroke-width="2.5"/>
+    <rect x="810" y="120" width="270" height="34" rx="8" ry="8" fill="#1a237e"/>
+    <rect x="810" y="146" width="270" height="8" fill="#1a237e"/>
+    <text x="945" y="142" text-anchor="middle" class="vm-title">VM-SIEM</text>
+    <text x="822" y="172" class="vm-body" font-weight="700">IP: 10.0.1.50</text>
+    <text x="822" y="189" class="vm-body-sm">Ubuntu Server 22.04 LTS</text>
+    <line x1="822" y1="198" x2="1068" y2="198" stroke="#1a237e" stroke-width="1" opacity="0.3"/>
+    <text x="832" y="215" class="vm-body-sm">• Wazuh Manager</text>
+    <text x="832" y="232" class="vm-body-sm">• Wazuh Indexer</text>
+    <text x="832" y="249" class="vm-body-sm">• Wazuh Dashboard</text>
+    <text x="832" y="266" class="vm-body-sm">• API e análise de regras</text>
+    <text x="832" y="283" class="vm-body-sm">• HTTPS Dashboard: TCP/443</text>
+    <text x="832" y="300" class="vm-body-sm">• Agents: TCP/1514 | Registro: TCP/1515</text>
+    <text x="1005" y="240" text-anchor="middle" font-size="9" fill="#616161">Manager</text>
+    <text x="1005" y="253" text-anchor="middle" font-size="9" fill="#616161">↓</text>
+    <text x="1005" y="266" text-anchor="middle" font-size="9" fill="#616161">Indexer</text>
+    <text x="1005" y="279" text-anchor="middle" font-size="9" fill="#616161">↓</text>
+    <text x="1005" y="292" text-anchor="middle" font-size="9" fill="#616161">Dashboard</text>
+    <rect x="810" y="334" width="270" height="36" rx="8" ry="8" fill="#1a237e" opacity="0.9"/>
+    <text x="945" y="357" text-anchor="middle" class="vm-footer">SIEM All-in-One</text>
+  </g>
+
+  <!-- NOTIFICAÇÃO TELEGRAM — novo componente à direita do SIEM -->
+  <g id="notificacao-telegram">
+    <rect x="1135" y="160" width="175" height="110" rx="8" ry="8" fill="#e3f2fd" stroke="#0277bd" stroke-width="2"/>
+    <rect x="1135" y="160" width="175" height="30" rx="8" ry="8" fill="#0277bd"/>
+    <rect x="1135" y="182" width="175" height="8" fill="#0277bd"/>
+    <text x="1222" y="180" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">NOTIFICAÇÃO</text>
+    <text x="1145" y="212" font-size="10" fill="#424242">• Canal: Telegram</text>
+    <text x="1145" y="229" font-size="10" fill="#424242">• Gatilho: alertas ≥ nivel 12</text>
+    <text x="1145" y="246" font-size="10" fill="#424242">• Origem: Wazuh Manager</text>
+    <text x="1145" y="260" font-size="9" fill="#757575" font-style="italic">Webhook / Script customizado</text>
+  </g>
+
+  <!-- Seta SIEM → Telegram -->
+  <line x1="1080" y1="243" x2="1135" y2="215" stroke="#0277bd" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="1135,215 1123,213 1128,223" fill="#0277bd"/>
+  <text x="1115" y="205" text-anchor="middle" font-size="10" font-weight="600" fill="#0277bd">Alertas de alta severidade</text>
+
+  <!-- VM-VÍTIMA LINUX -->
+  <g id="vm-linux">
+    <rect x="262" y="500" width="270" height="250" rx="8" ry="8" fill="#ffffff" stroke="#b71c1c" stroke-width="2.5"/>
+    <rect x="262" y="500" width="270" height="34" rx="8" ry="8" fill="#b71c1c"/>
+    <rect x="262" y="526" width="270" height="8" fill="#b71c1c"/>
+    <text x="397" y="522" text-anchor="middle" class="vm-title">VM-VÍTIMA LINUX</text>
+    <text x="274" y="552" class="vm-body" font-weight="700">IP: 10.0.1.200</text>
+    <text x="274" y="569" class="vm-body-sm">Ubuntu Server 22.04 LTS</text>
+    <line x1="274" y1="578" x2="520" y2="578" stroke="#b71c1c" stroke-width="1" opacity="0.3"/>
+    <text x="284" y="595" class="vm-body-sm">• Apache: TCP/80</text>
+    <text x="284" y="612" class="vm-body-sm">• OpenSSH: TCP/22</text>
+    <text x="284" y="629" class="vm-body-sm">• vsftpd: TCP/21</text>
+    <text x="284" y="646" class="vm-body-sm">• auth.log</text>
+    <text x="284" y="663" class="vm-body-sm">• Wazuh Agent</text>
+    <rect x="262" y="714" width="270" height="36" rx="8" ry="8" fill="#b71c1c" opacity="0.9"/>
+    <text x="397" y="737" text-anchor="middle" class="vm-footer">Endpoint Linux monitorado</text>
+  </g>
+
+  <!-- VM-VÍTIMA WINDOWS -->
+  <g id="vm-windows">
+    <rect x="627" y="500" width="270" height="250" rx="8" ry="8" fill="#ffffff" stroke="#b71c1c" stroke-width="2.5"/>
+    <rect x="627" y="500" width="270" height="34" rx="8" ry="8" fill="#b71c1c"/>
+    <rect x="627" y="526" width="270" height="8" fill="#b71c1c"/>
+    <text x="762" y="522" text-anchor="middle" class="vm-title">VM-VÍTIMA WINDOWS</text>
+    <text x="639" y="552" class="vm-body" font-weight="700">IP: 10.0.1.201</text>
+    <text x="639" y="569" class="vm-body-sm">Windows 10/11 Enterprise</text>
+    <line x1="639" y1="578" x2="885" y2="578" stroke="#b71c1c" stroke-width="1" opacity="0.3"/>
+    <text x="649" y="595" class="vm-body-sm">• RDP: TCP/3389</text>
+    <text x="649" y="612" class="vm-body-sm">• SMB: TCP/445</text>
+    <text x="649" y="629" class="vm-body-sm">• Security Events</text>
+    <text x="649" y="646" class="vm-body-sm">• Auditoria de autenticação</text>
+    <text x="649" y="663" class="vm-body-sm">• Wazuh Agent</text>
+    <rect x="627" y="714" width="270" height="36" rx="8" ry="8" fill="#b71c1c" opacity="0.9"/>
+    <text x="762" y="737" text-anchor="middle" class="vm-footer">Endpoint Windows monitorado</text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- SETAS E FLUXOS                                                -->
+  <!-- ============================================================ -->
+
+  <!-- 1. Fluxo de simulação controlada -->
+  <line x1="260" y1="370" x2="350" y2="500" stroke="#c62828" stroke-width="2.5"/>
+  <polygon points="350,500 340,488 352,492" fill="#c62828"/>
+  <line x1="330" y1="370" x2="740" y2="500" stroke="#c62828" stroke-width="2.5"/>
+  <polygon points="740,500 730,492 734,504" fill="#c62828"/>
+  <text x="290" y="450" class="label" fill="#c62828">Atividade controlada</text>
+
+  <!-- 2. Visibilidade passiva Suricata -->
+  <line x1="300" y1="425" x2="540" y2="320" stroke="#ef6c00" stroke-width="1.8" stroke-dasharray="6,4"/>
+  <polygon points="540,320 528,318 534,328" fill="#ef6c00"/>
+  <line x1="520" y1="425" x2="600" y2="320" stroke="#ef6c00" stroke-width="1.8" stroke-dasharray="6,4"/>
+  <polygon points="600,320 588,322 594,312" fill="#ef6c00"/>
+  <text x="590" y="435" class="label" fill="#ef6c00" font-style="italic">Tráfego observado pelo Suricata</text>
+
+  <!-- 3. Telemetria Sensor -> SIEM -->
+  <line x1="715" y1="243" x2="810" y2="243" stroke="#1565c0" stroke-width="2.5"/>
+  <polygon points="810,243 798,238 798,248" fill="#1565c0"/>
+  <text x="762" y="233" text-anchor="middle" class="label" fill="#1565c0">Wazuh Agent → eve.json → Manager</text>
+
+  <!-- 4. Telemetria Endpoints -> SIEM -->
+  <path d="M 532 628 Q 660 628 810 370" fill="none" stroke="#42a5f5" stroke-width="1.8" stroke-dasharray="6,4"/>
+  <polygon points="810,370 802,380 812,377" fill="#42a5f5"/>
+  <path d="M 762 628 Q 860 628 980 370" fill="none" stroke="#42a5f5" stroke-width="1.8" stroke-dasharray="6,4"/>
+  <polygon points="980,370 970,375 973,365" fill="#42a5f5"/>
+  <text x="920" y="560" text-anchor="middle" class="label" fill="#1565c0">Wazuh Agent → Manager (TCP/1514)</text>
+
+  <!-- ============================================================ -->
+  <!-- PAINEL LATERAL DE ESPECIFICAÇÕES                              -->
+  <!-- ============================================================ -->
+  <rect x="1135" y="300" width="175" height="455" rx="8" ry="8" fill="#ffffff" stroke="#bdbdbd" stroke-width="1.5"/>
+  <text x="1222" y="325" text-anchor="middle" class="spec-title">ESPECIFICAÇÕES</text>
+  <text x="1222" y="340" text-anchor="middle" class="spec-title">DO LABORATÓRIO</text>
+  <line x1="1150" y1="353" x2="1295" y2="353" stroke="#bdbdbd" stroke-width="1"/>
+  <text x="1150" y="380" class="spec-body">• Host: AMD Ryzen 7</text>
+  <text x="1150" y="397" class="spec-body">  5700X</text>
+  <text x="1150" y="420" class="spec-body">• Memória: 32 GB DDR4</text>
+  <text x="1150" y="443" class="spec-body">• Armazenamento:</text>
+  <text x="1150" y="460" class="spec-body">  NVMe 1 TB</text>
+  <text x="1150" y="483" class="spec-body">• Hipervisor: VMware</text>
+  <text x="1150" y="500" class="spec-body">  Workstation Pro</text>
+  <text x="1150" y="530" class="spec-body">• Sensor: Suricata 7.x</text>
+  <text x="1150" y="553" class="spec-body">• SIEM: Wazuh 4.9.x</text>
+  <text x="1150" y="576" class="spec-body">• Regras Suricata: 8</text>
+  <text x="1150" y="599" class="spec-body">• Regras Wazuh:</text>
+  <text x="1150" y="616" class="spec-body">  conforme arquivo</text>
+  <text x="1150" y="633" class="spec-body">  local real</text>
+  <text x="1150" y="663" class="spec-body">• Estado: ambiente de</text>
+  <text x="1150" y="680" class="spec-body">  estudo e validação</text>
+  <text x="1150" y="710" class="spec-body">• Notificação: Telegram</text>
+  <text x="1150" y="727" class="spec-body">  (alertas ≥ nivel 12)</text>
+
+  <!-- ============================================================ -->
+  <!-- CICLO DE DETECÇÃO                                             -->
+  <!-- ============================================================ -->
+  <rect x="60" y="820" width="290" height="130" rx="8" ry="8" fill="#ffebee" stroke="#c62828" stroke-width="2"/>
+  <text x="205" y="855" text-anchor="middle" class="card-title" fill="#c62828">1. SIMULAÇÃO</text>
+  <text x="205" y="885" text-anchor="middle" class="card-body">Kali Linux</text>
+  <text x="205" y="908" text-anchor="middle" class="card-body">Atividade controlada</text>
+
+  <rect x="380" y="820" width="290" height="130" rx="8" ry="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="2"/>
+  <text x="525" y="855" text-anchor="middle" class="card-title" fill="#ef6c00">2. COLETA</text>
+  <text x="525" y="885" text-anchor="middle" class="card-body">Suricata: eve.json</text>
+  <text x="525" y="908" text-anchor="middle" class="card-body">Agents: auth.log e eventos Windows</text>
+
+  <rect x="700" y="820" width="290" height="130" rx="8" ry="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+  <text x="845" y="855" text-anchor="middle" class="card-title" fill="#1565c0">3. CORRELAÇÃO</text>
+  <text x="845" y="882" text-anchor="middle" class="card-body">Wazuh Manager</text>
+  <text x="845" y="902" text-anchor="middle" class="card-body">Regras, severidade e</text>
+  <text x="845" y="922" text-anchor="middle" class="card-body">MITRE ATT&amp;CK quando aplicável</text>
+
+  <rect x="1020" y="820" width="290" height="130" rx="8" ry="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="1165" y="855" text-anchor="middle" class="card-title" fill="#2e7d32">4. ANÁLISE</text>
+  <text x="1165" y="885" text-anchor="middle" class="card-body">Wazuh Dashboard</text>
+  <text x="1165" y="908" text-anchor="middle" class="card-body">Triagem e evidências</text>
+
+  <!-- Setas entre cards -->
+  <line x1="350" y1="885" x2="380" y2="885" stroke="#9e9e9e" stroke-width="2"/>
+  <polygon points="380,885 370,880 370,890" fill="#9e9e9e"/>
+  <line x1="670" y1="885" x2="700" y2="885" stroke="#9e9e9e" stroke-width="2"/>
+  <polygon points="700,885 690,880 690,890" fill="#9e9e9e"/>
+  <line x1="990" y1="885" x2="1020" y2="885" stroke="#9e9e9e" stroke-width="2"/>
+  <polygon points="1020,885 1010,880 1010,890" fill="#9e9e9e"/>
+
+  <!-- ============================================================ -->
+  <!-- LEGENDA                                                       -->
+  <!-- ============================================================ -->
+  <rect x="60" y="970" width="1250" height="58" rx="6" ry="6" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <line x1="85" y1="990" x2="130" y2="990" stroke="#c62828" stroke-width="2.5"/>
+  <text x="137" y="994" class="legend-text">Atividade controlada</text>
+  <line x1="340" y1="990" x2="385" y2="990" stroke="#ef6c00" stroke-width="1.8" stroke-dasharray="5,3"/>
+  <text x="392" y="994" class="legend-text">Tráfego observado pelo Suricata</text>
+  <line x1="660" y1="990" x2="705" y2="990" stroke="#1565c0" stroke-width="2.5"/>
+  <text x="712" y="994" class="legend-text">Eventos Sensor → Manager</text>
+  <line x1="85" y1="1014" x2="130" y2="1014" stroke="#42a5f5" stroke-width="1.8" stroke-dasharray="5,3"/>
+  <text x="137" y="1018" class="legend-text">Telemetria Agents → Manager</text>
+  <line x1="420" y1="1014" x2="465" y2="1014" stroke="#2e7d32" stroke-width="2.5"/>
+  <text x="472" y="1018" class="legend-text">Dados indexados para análise</text>
+  <line x1="700" y1="1014" x2="745" y2="1014" stroke="#0277bd" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="752" y="1018" class="legend-text">Alertas de alta severidade → Telegram</text>
+
+  <!-- Nota VMnet8 -->
+  <text x="30" y="1045" class="note">VMnet8/NAT: interface secundária utilizada somente para atualizações e instalação de dependncias</text>
+
+  <!-- Rodapé -->
+  <text x="1570" y="1045" text-anchor="end" class="footer-text">Leonardo Ramos · LeoSec1 · github.com/LeoSec1/soc-homelab</text>
+
+</svg>

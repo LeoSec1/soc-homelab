@@ -26,7 +26,7 @@ A arquitetura foi projetada para segmentar funções operacionais entre atacante
 
 <div align="center">
 
-![Diagrama de Arquitetura do Laboratório](imagens/arquitetura.svg?v=5)
+![Diagrama de Arquitetura do Laboratório](imagens/arquitetura-v5.svg)
 
 </div>
 
