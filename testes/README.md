@@ -6,8 +6,8 @@ Todos os testes são executados exclusivamente na rede isolada `10.0.1.0/24` (VM
 
 | ID | Cenário | Técnica MITRE | Alvo | Status |
 |---|---|---|---|---|
-| TST-01 | Varredura SYN (Nmap) | T1046 | VM-Sensor (`10.0.1.10`) | [✅ Validado](01-varredura-nmap.md) |
-| TST-02 | Força bruta SSH (Hydra) | T1110.001 | VM-Vítima Linux | Pendente |
+| TST-01 | Varredura SYN (Nmap) | T1046 | VM-Vítima Linux (`10.0.1.200`) | [✅ Validado](01-varredura-nmap.md) |
+| TST-02 | Força bruta SSH (Hydra) | T1110.001 | VM-Vítima Linux (`10.0.1.200`) | [✅ Validado](02-forca-bruta-ssh.md) |
 | TST-03 | Shellshock via HTTP (cURL) | T1190 | VM-Vítima Linux | Pendente |
 | TST-04 | Força bruta RDP (Hydra) | T1110.001 | VM-Vítima Windows | Pendente |
 | TST-05 | Login FTP anônimo | — | VM-Vítima Linux | Pendente |

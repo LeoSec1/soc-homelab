@@ -116,7 +116,7 @@ O ciclo de detecção transforma tráfego e eventos brutos em inteligência acio
 | ID | Cenário | Fonte de Telemetria | MITRE ATT&CK | Status | Evidência |
 |---:|---|---|---|---|---|
 | 01 | Varredura SYN de Portas | Suricata NIDS (Tráfego de rede) | `T1046` Network Service Discovery | `Validado` | [01-varredura-nmap.md](testes/01-varredura-nmap.md) |
-| 02 | Tentativas Repetidas de Autenticação SSH | Suricata NIDS + `auth.log` | `T1110.001` Password Guessing | `Em validação` | [testes/README.md](testes/README.md) |
+| 02 | Tentativas Repetidas de Autenticação SSH | Suricata NIDS + `auth.log` | `T1110.001` Password Guessing | `Validado` | [02-forca-bruta-ssh.md](testes/02-forca-bruta-ssh.md) |
 | 03 | Tentativas Repetidas de Autenticação RDP | Windows Event Log (`Security.evtx` Event ID 4625) | `T1110.001` Password Guessing | `Em validação` | [testes/README.md](testes/README.md) |
 | 04 | Exploração Web Shellshock | Suricata NIDS (Headers HTTP L7) | `T1190` Exploit Public-Facing App | `Em validação` | [testes/README.md](testes/README.md) |
 | 05 | Autenticação FTP Anônima | Suricata NIDS (Comandos FTP L7) | *Em revisão (Misconfiguration)* | `Em validação` | [testes/README.md](testes/README.md) |
