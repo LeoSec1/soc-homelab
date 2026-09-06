@@ -118,7 +118,7 @@ O ciclo de detecção transforma tráfego e eventos brutos em inteligência acio
 | 01 | Varredura SYN de Portas | Suricata NIDS (Tráfego de rede) | `T1046` Network Service Discovery | `Validado` | [01-varredura-nmap.md](testes/01-varredura-nmap.md) |
 | 02 | Tentativas Repetidas de Autenticação SSH | Suricata NIDS + `auth.log` | `T1110.001` Password Guessing | `Validado` | [02-forca-bruta-ssh.md](testes/02-forca-bruta-ssh.md) |
 | 03 | Tentativas Repetidas de Autenticação RDP | Windows Event Log (`Security.evtx` Event ID 4625) | `T1110.001` Password Guessing | `Em validação` | [testes/README.md](testes/README.md) |
-| 04 | Exploração Web Shellshock | Suricata NIDS (Headers HTTP L7) | `T1190` Exploit Public-Facing App | `Em validação` | [testes/README.md](testes/README.md) |
+| 04 | Exploração Web Shellshock | Suricata NIDS (Headers HTTP L7) + Apache | `T1190` Exploit Public-Facing App | `Validado` | [03-exploit-shellshock.md](testes/03-exploit-shellshock.md) |
 | 05 | Autenticação FTP Anônima | Suricata NIDS (Comandos FTP L7) | *Em revisão (Misconfiguration)* | `Em validação` | [testes/README.md](testes/README.md) |
 | 06 | Tráfego ICMP Anômalo com Carga Elevada | Suricata NIDS (Inspeção de Payload) | *Em revisão (T1095 / T1572)* | `Em validação` | [testes/README.md](testes/README.md) |
 | 07 | Cadeia de Ataque: Scan seguido de Força Bruta | Wazuh Manager (Correlação Temporal 10 min) | `T1046` + `T1110` | `Em validação` | [testes/README.md](testes/README.md) |
