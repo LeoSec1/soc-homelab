@@ -119,7 +119,7 @@ O ciclo de detecção transforma tráfego e eventos brutos em inteligência acio
 | 02 | Tentativas Repetidas de Autenticação SSH | Suricata NIDS + `auth.log` | `T1110.001` Password Guessing | `Validado` | [02-forca-bruta-ssh.md](testes/02-forca-bruta-ssh.md) |
 | 03 | Tentativas Repetidas de Autenticação RDP | Windows Event Log (`Security.evtx` Event ID 4625) | `T1110.001` Password Guessing | `Validado` | [04-forca-bruta-rdp.md](testes/04-forca-bruta-rdp.md) |
 | 04 | Exploração Web Shellshock | Suricata NIDS (Headers HTTP L7) + Apache | `T1190` Exploit Public-Facing App | `Validado` | [03-exploit-shellshock.md](testes/03-exploit-shellshock.md) |
-| 05 | Autenticação FTP Anônima | Suricata NIDS (Comandos FTP L7) | *Em revisão (Misconfiguration)* | `Em validação` | [testes/README.md](testes/README.md) |
+| 05 | Autenticação FTP Anônima | Suricata NIDS (Comandos FTP L7) | *Violação de Política (Misconfiguration)* | `Validado` | [05-login-ftp-anonimo.md](testes/05-login-ftp-anonimo.md) |
 | 06 | Tráfego ICMP Anômalo com Carga Elevada | Suricata NIDS (Inspeção de Payload) | `T1095` Non-App Layer Protocol | `Validado` | [06-icmp-anomalo.md](testes/06-icmp-anomalo.md) |
 | 07 | Cadeia de Ataque: Scan seguido de Força Bruta | Wazuh Manager (Correlação Temporal 10 min) | `T1046` + `T1110` | `Em validação` | [testes/README.md](testes/README.md) |
 
@@ -149,12 +149,15 @@ Para assegurar reprodutibilidade e autenticidade técnica, cada caso de detecç�
 - Comparativo entre resultado esperado e resultado observado.
 - Análise técnica e recomendações do analista.
 
-Os diretórios de evidências e relatórios foram preparados para receber validações reais à medida que os cenários forem executados:
+### Painéis de Monitoramento e Threat Hunting (Dark Mode)
 
-- Índice de cenários de teste: [`testes/README.md`](testes/README.md)
-- Modelo padrão para documentação: [`testes/modelo-relatorio.md`](testes/modelo-relatorio.md)
-- Diretório para capturas do SIEM: [`imagens/dashboard/`](imagens/dashboard/)
-- Diretório para capturas das simulações: [`imagens/evidencias/`](imagens/evidencias/)
+A telemetria consolidada do laboratório é centralizada no Wazuh Dashboard, proporcionando visibilidade unificada de rede (NIDS) e endpoints (HIDS):
+
+![Painel MITRE ATT&CK no Wazuh Dashboard](imagens/dashboard/wazuh-mitre-dashboard-dark.png)
+*Figura: Matriz e distribuição analítica de táticas e técnicas do MITRE ATT&CK observadas durante as simulações.*
+
+![Visão Geral de Incidentes e Agentes](imagens/dashboard/wazuh-overview-kpi-dark.png)
+*Figura: Indicadores operacionais (KPIs) com 100% de disponibilidade dos agentes e severidades correlacionadas.*
 
 ---
 
