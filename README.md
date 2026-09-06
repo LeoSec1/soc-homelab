@@ -120,7 +120,7 @@ O ciclo de detecção transforma tráfego e eventos brutos em inteligência acio
 | 03 | Tentativas Repetidas de Autenticação RDP | Windows Event Log (`Security.evtx` Event ID 4625) | `T1110.001` Password Guessing | `Validado` | [04-forca-bruta-rdp.md](testes/04-forca-bruta-rdp.md) |
 | 04 | Exploração Web Shellshock | Suricata NIDS (Headers HTTP L7) + Apache | `T1190` Exploit Public-Facing App | `Validado` | [03-exploit-shellshock.md](testes/03-exploit-shellshock.md) |
 | 05 | Autenticação FTP Anônima | Suricata NIDS (Comandos FTP L7) | *Em revisão (Misconfiguration)* | `Em validação` | [testes/README.md](testes/README.md) |
-| 06 | Tráfego ICMP Anômalo com Carga Elevada | Suricata NIDS (Inspeção de Payload) | *Em revisão (T1095 / T1572)* | `Em validação` | [testes/README.md](testes/README.md) |
+| 06 | Tráfego ICMP Anômalo com Carga Elevada | Suricata NIDS (Inspeção de Payload) | `T1095` Non-App Layer Protocol | `Validado` | [06-icmp-anomalo.md](testes/06-icmp-anomalo.md) |
 | 07 | Cadeia de Ataque: Scan seguido de Força Bruta | Wazuh Manager (Correlação Temporal 10 min) | `T1046` + `T1110` | `Em validação` | [testes/README.md](testes/README.md) |
 
 ---
