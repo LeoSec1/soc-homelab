@@ -20,8 +20,9 @@
 ## 3. Topologia e Parâmetros
 
 * **IP Atacante (Kali Linux):** `10.0.1.100` (porta de origem efêmera)
-* **IP Alvo / Sensor:** `10.0.1.10` (`VM-Sensor`)
-* **Portas Alvo:** `1-100/TCP`
+* **IP Alvo (Vítima Linux):** `10.0.1.200` (`VM-Vítima`)
+* **Sensor em Modo Promíscuo:** `10.0.1.10` (`VM-Sensor` via `ens34`)
+* **Portas Alvo:** `1-1000/TCP`
 * **Ferramenta Utilizada:** `nmap` v7.99
 
 ---
@@ -48,10 +49,10 @@ alert tcp any any -> $HOME_NET any (
 ## 5. Evidências Coletadas
 
 ### 5.1 Execução Ofensiva no Kali Linux
-O comando executado enviou 100 pacotes SYN em 0.17 segundos, ultrapassando com sucesso o threshold da regra (mínimo de 20 pacotes em 5 segundos):
+O comando executado enviou pacotes SYN contra a máquina vítima, ultrapassando o threshold da regra (mínimo de 20 pacotes em 5 segundos):
 
 ```bash
-sudo nmap -sS -T4 -n -p 1-100 10.0.1.10
+sudo nmap -sS -p 1-1000 -n -T4 10.0.1.200
 ```
 
 ![Execução do Nmap no Kali Linux](../imagens/evidencias/01-nmap-kali.png)
@@ -59,14 +60,14 @@ sudo nmap -sS -T4 -n -p 1-100 10.0.1.10
 ### 5.2 Alerta Capturado no Suricata (`eve.json`)
 ```json
 {
-  "timestamp": "2026-09-05T20:06:45.140351-0300",
-  "flow_id": 1481590634698141,
+  "timestamp": "2026-09-05T21:00:44.952099-0300",
+  "flow_id": 276477581531792,
   "in_iface": "ens34",
   "event_type": "alert",
-  "src_ip": "10.0.1.135",
-  "src_port": 61857,
-  "dest_ip": "10.0.1.10",
-  "dest_port": 38,
+  "src_ip": "10.0.1.100",
+  "src_port": 47760,
+  "dest_ip": "10.0.1.200",
+  "dest_port": 847,
   "proto": "TCP",
   "alert": {
     "action": "allowed",
