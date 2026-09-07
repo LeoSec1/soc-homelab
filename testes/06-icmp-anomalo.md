@@ -1,4 +1,4 @@
-﻿# Relatório de Teste: TST-06 — Tráfego ICMP com Carga Anômala (Hping3)
+# Relatório de Teste: TST-06 — Tráfego ICMP com Carga Anômala (Hping3)
 
 ## 1. Informações Básicas
 
@@ -34,12 +34,7 @@
 
 ### Suricata NIDS (Inspeção L3 / DPI)
 ```text
-alert icmp any any -> $HOME_NET any (
-    msg:"SOC-HOMELAB - ICMP com Payload Anomalo";
-    dsize:>1000;
-    classtype:misc-activity;
-    sid:1000003; rev:1;
-)
+alert icmp any any -> $HOME_NET any (msg:"SOC-HOMELAB - ICMP com Payload Anomalo"; dsize:>1000; classtype:bad-unknown; sid:1000003; rev:1;)
 ```
 * **Mecanismo:** A diretiva `dsize:>1000` avalia o tamanho da carga líquida do pacote, ignorando cabeçalhos IP/ICMP. Pacotes de diagnóstico legítimos (ping padrão de 32 a 64 bytes) não acionam a regra, eliminando falsos positivos.
 

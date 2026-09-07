@@ -11,9 +11,12 @@
 
 </div>
 
-Este projeto foi desenvolvido para estudo prático de Blue Team e Engenharia de Detecção. A arquitetura integra o Suricata como Network Intrusion Detection System (NIDS), responsável pela inspeção de tráfego de rede em tempo real, e o Wazuh como SIEM, utilizado para centralização, normalização e correlação de logs provenientes da rede e dos endpoints monitorados.
+Trabalho com suporte e infraestrutura de TI e montei este laboratório nas horas vagas para sair da teoria e vivenciar na prática a rotina de Blue Team e Engenharia de Detecção. O projeto integra o **Suricata 7.x** como NIDS (inspeção passiva de tráfego em modo promíscuo com AF_PACKET) e o **Wazuh 4.9** como SIEM (centralização de telemetria de rede, logs de endpoints Linux/Windows e correlação de eventos).
 
-O ambiente foi construído em uma infraestrutura virtualizada e isolada, composta por máquinas Linux e Windows monitoradas, além de uma máquina Kali Linux utilizada para executar simulações controladas. O objetivo é validar, de forma prática, o ciclo de detecção de incidentes: geração de telemetria, coleta de eventos, aplicação de regras customizadas, correlação de alertas e análise de comportamentos suspeitos.
+O laboratório foi construído do zero em ambiente virtualizado isolado no VMware, monitorando servidores Linux (Apache, SSH, vsftpd), estações Windows com auditoria de eventos (`Security.evtx`) e uma máquina Kali Linux para testes controlados. O objetivo é demonstrar o ciclo real de detecção de um SOC: da geração de tráfego à regra customizada e investigação no dashboard.
+
+> [!TIP]
+> **Diário de Bordo & Problemas Reais:** Se você está montando o ambiente do zero, consulte o [`notas.md`](notas.md) — lá documentei os desafios reais encontrados na bancada (expansão de LVM no Ubuntu Server, firewall do Windows em português quebrando scripts, compatibilidade de versões de agentes e persistência do modo promíscuo via systemd).
 
 [Arquitetura](#arquitetura-do-laboratório) · [Estado Operacional](#estado-operacional) · [Ambiente](#ambiente-monitorado) · [Da Simulação ao Alerta](#da-simulação-ao-alerta) · [Casos de Detecção](#casos-de-detecção) · [Regras](#regras-de-detecção) · [Documentação](#documentação-técnica)
 

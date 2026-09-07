@@ -1,4 +1,4 @@
-﻿# Relatório de Teste: TST-05 — Autenticação FTP Anônima (cURL / FTP)
+# Relatório de Teste: TST-05 — Autenticação FTP Anônima (cURL / FTP)
 
 ## 1. Informações Básicas
 
@@ -32,12 +32,7 @@
 
 ### 4.1 Camada de Rede: Suricata NIDS (Inspeção L7 FTP)
 ```text
-alert ftp any any -> $HOME_NET 21 (
-    msg:"SOC-HOMELAB - Login Anonimo FTP";
-    content:"anonymous"; nocase;
-    classtype:policy-violation;
-    sid:1000004; rev:1;
-)
+alert tcp any any -> $HOME_NET 21 (msg:"SOC-HOMELAB - Login Anonimo FTP"; flow:to_server,established; content:"USER anonymous"; nocase; classtype:suspicious-login; sid:1000004; rev:1;)
 ```
 * **Decodificação de Aplicação:** O Suricata disseca a sequência de comandos FTP e avalia o parâmetro `USER anonymous` mesmo que a conexão trafegue em portas não convencionais se o protocolo for decodificado como FTP.
 
