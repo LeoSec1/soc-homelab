@@ -68,8 +68,8 @@ A arquitetura foi projetada para segmentar funções operacionais entre atacante
 | Wazuh Agents Linux | `Operacional` | Versão `4.9.2-1` ativa no Sensor e na Vítima Linux |
 | Wazuh Agent Windows | `Operacional` | Versão `4.9.2-1` ativa e monitorando canal de segurança (`Security.evtx`) |
 | Regras Customizadas (Suricata / Wazuh) | `Configurado` | 6 regras Suricata e 7 regras locais Wazuh carregadas |
-| Casos de Teste Ofensivos | `Em validação` | Cenários mapeados e comandos definidos |
-| Evidências de Dashboard e Logs | `Em coleta de evidências` | Estrutura de diretórios pronta para inclusão de capturas e JSONs |
+| Casos de Teste Ofensivos | `Validado` | 7 cenários executados e correlacionados (Nmap, SSH, RDP, Shellshock, FTP, ICMP, Attack Chain) |
+| Evidências de Dashboard e Logs | `Concluído` | Relatórios formais com capturas de tela e payloads JSON em `testes/` |
 | Integração de Notificações Telegram | `Planejado` | Implementação via Webhook/Script para alertas de alta severidade |
 
 ---
@@ -121,7 +121,7 @@ O ciclo de detecção transforma tráfego e eventos brutos em inteligência acio
 | 04 | Exploração Web Shellshock | Suricata NIDS (Headers HTTP L7) + Apache | `T1190` Exploit Public-Facing App | `Validado` | [03-exploit-shellshock.md](testes/03-exploit-shellshock.md) |
 | 05 | Autenticação FTP Anônima | Suricata NIDS (Comandos FTP L7) | *Violação de Política (Misconfiguration)* | `Validado` | [05-login-ftp-anonimo.md](testes/05-login-ftp-anonimo.md) |
 | 06 | Tráfego ICMP Anômalo com Carga Elevada | Suricata NIDS (Inspeção de Payload) | `T1095` Non-App Layer Protocol | `Validado` | [06-icmp-anomalo.md](testes/06-icmp-anomalo.md) |
-| 07 | Cadeia de Ataque: Scan seguido de Força Bruta | Wazuh Manager (Correlação Temporal 10 min) | `T1046` + `T1110` | `Em validação` | [testes/README.md](testes/README.md) |
+| 07 | Cadeia de Ataque: Scan seguido de Força Bruta | Suricata NIDS + Wazuh Manager & HIDS | `T1046` + `T1110.001` | `Validado` | [07-cadeia-de-ataque.md](testes/07-cadeia-de-ataque.md) |
 
 ---
 
@@ -153,6 +153,9 @@ Para assegurar reprodutibilidade e autenticidade técnica, cada caso de detecç�
 
 A telemetria consolidada do laboratório é centralizada no Wazuh Dashboard, proporcionando visibilidade unificada de rede (NIDS) e endpoints (HIDS):
 
+![Central de Comando e Monitoramento de Ameaças - SOC Homelab](imagens/dashboard/soc-homelab-dashboard-overview.png)
+*Figura: Threat Monitoring Center — Dashboard customizado integrando KPIs operacionais, régua de severidade, linha do tempo, técnicas MITRE ATT&CK, ranking de atacantes e triagem de telemetria.*
+
 ![Painel MITRE ATT&CK no Wazuh Dashboard](imagens/dashboard/wazuh-mitre-dashboard-dark.png)
 *Figura: Matriz e distribuição analítica de táticas e técnicas do MITRE ATT&CK observadas durante as simulações.*
 
@@ -168,6 +171,7 @@ A telemetria consolidada do laboratório é centralizada no Wazuh Dashboard, pro
 | [`docs/arquitetura.md`](docs/arquitetura.md) | Topologia de rede, segmentação e dimensionamento de hardware |
 | [`docs/instalacao.md`](docs/instalacao.md) | Procedimento passo a passo para replicação do laboratório do zero |
 | [`docs/troubleshooting.md`](docs/troubleshooting.md) | Guia estruturado de diagnóstico e resolução de falhas operacionais |
+| [`docs/guia-modelo-osi-l7-dpi.pdf`](docs/guia-modelo-osi-l7-dpi.pdf) | Guia didático visual sobre Modelo OSI, Camada 7 e Deep Packet Inspection (DPI) |
 | [`regras/README.md`](regras/README.md) | Mapeamento completo entre SIDs Suricata e Rule IDs Wazuh |
 | [`testes/README.md`](testes/README.md) | Escopo dos testes e registro de status de execução |
 | [`notas.md`](notas.md) | Diário de bordo técnico com problemas reais e soluções aplicadas |
@@ -192,12 +196,12 @@ A implementação e sustentação do ambiente demandou resolução prática de d
 
 ## Próximas Etapas
 
-- [ ] Executar formalmente a bateria de testes a partir da VM-Atacante.
-- [ ] Coletar capturas sanitizadas dos alertas gerados no Wazuh Dashboard.
-- [ ] Criar os relatórios individuais de cada cenário com base no modelo padronizado.
-- [ ] Validar a precisão dos thresholds e níveis de severidade das regras locais.
-- [ ] Concluir a revisão técnica das associações MITRE ATT&CK para tráfego anômalo e FTP.
-- [ ] Validar script de integração para envio de alertas críticos via Telegram.
+- [x] Executar formalmente a bateria de testes a partir da VM-Atacante.
+- [x] Coletar capturas sanitizadas dos alertas gerados no Wazuh Dashboard.
+- [x] Criar os relatórios individuais de cada cenário com base no modelo padronizado.
+- [x] Validar correlação temporal de multi-estágio (Cadeia de Ataque: Scan + Força Bruta).
+- [ ] Implementar integração com bot do Telegram para notificações de alertas críticos (Nível 12+).
+- [ ] Adicionar pipeline de testes automatizados de sintaxe das regras (`wazuh-logtest` e `suricata -T`).
 
 ---
 

@@ -60,10 +60,18 @@ Guarde as senhas geradas, especialmente a do usuário `admin`.
 A versão do agente não pode ser superior à do Manager. Fixar em `4.9.2-1`:
 
 ```bash
-WAZUH_MANAGER="10.0.1.50" apt-get install wazuh-agent=4.9.2-1
-systemctl daemon-reload
-systemctl enable wazuh-agent
-systemctl start wazuh-agent
+# 1. Adicionar chave GPG do repositório Wazuh
+curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | gpg --no-default-keyring --keyring gnupg-ring:/usr/share/keyrings/wazuh.gpg --import && chmod 644 /usr/share/keyrings/wazuh.gpg
+
+# 2. Adicionar repositório APT oficial
+echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4.x/apt/ stable main" | sudo tee -a /etc/apt/sources.list.d/wazuh.list
+sudo apt-get update
+
+# 3. Instalar o agente apontando para o Manager
+sudo WAZUH_MANAGER="10.0.1.50" apt-get install -y wazuh-agent=4.9.2-1
+sudo systemctl daemon-reload
+sudo systemctl enable wazuh-agent
+sudo systemctl start wazuh-agent
 ```
 
 ## Suricata (VM-Sensor)

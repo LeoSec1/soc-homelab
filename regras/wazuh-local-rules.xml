@@ -1,4 +1,4 @@
-﻿<!-- ============================================================ -->
+<!-- ============================================================ -->
 <!-- Regras de correlacao customizadas do Wazuh para o SOC Homelab -->
 <!-- ============================================================ -->
 
@@ -68,9 +68,10 @@
 
   <!-- Correlacao: Scan + Brute Force do mesmo IP em 10 minutos -->
   <rule id="100021" level="14" timeframe="600">
+    <if_sid>100020</if_sid>
     <if_matched_sid>100010</if_matched_sid>
     <same_source_ip />
-    <description>SOC-HOMELAB: Cadeia de ataque detectada (Scan + Brute Force do mesmo IP)</description>
+    <description>SOC-HOMELAB: Cadeia de ataque detectada (Scan seguido de Brute Force SSH do mesmo IP)</description>
     <mitre>
       <id>T1046</id>
       <id>T1110</id>

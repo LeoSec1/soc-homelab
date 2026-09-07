@@ -1,23 +1,33 @@
-﻿# ISOs e discos de VM
+# ISOs e discos de VM
 *.iso
 *.ova
 *.vmdk
 *.vdi
 *.vmx
+*.vmss
+*.vmsd
 *.nvram
 *.log
+*.lck
 
-# Credenciais
+# Credenciais e chaves
 *.pem
 *.key
+id_rsa*
+id_ed25519*
 .env
 passwords.txt
+credentials*
 
 # PCAPs grandes
 *.pcap
 
-# Cache
+# Cache e temporarios
 __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/
