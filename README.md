@@ -162,6 +162,7 @@ A telemetria consolidada do laboratório é centralizada no Wazuh Dashboard, pro
 
 | Documento | Descrição |
 |---|---|
+| [`docs/playbook.md`](docs/playbook.md) | Playbook operacional completo com 100% dos comandos, configurações e testes |
 | [`docs/arquitetura.md`](docs/arquitetura.md) | Topologia de rede, segmentação e dimensionamento de hardware |
 | [`docs/instalacao.md`](docs/instalacao.md) | Procedimento passo a passo para replicação do laboratório do zero |
 | [`docs/troubleshooting.md`](docs/troubleshooting.md) | Guia estruturado de diagnóstico e resolução de falhas operacionais |
