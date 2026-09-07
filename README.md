@@ -149,18 +149,12 @@ Para assegurar reprodutibilidade e autenticidade técnica, cada caso de detecç�
 - Comparativo entre resultado esperado e resultado observado.
 - Análise técnica e recomendações do analista.
 
-### Painéis de Monitoramento e Threat Hunting (Dark Mode)
+### Painel Integrado de Monitoramento (Threat Monitoring Center)
 
 A telemetria consolidada do laboratório é centralizada no Wazuh Dashboard, proporcionando visibilidade unificada de rede (NIDS) e endpoints (HIDS):
 
 ![Central de Comando e Monitoramento de Ameaças - SOC Homelab](imagens/dashboard/soc-homelab-dashboard-overview.png)
-*Figura: Threat Monitoring Center — Dashboard customizado integrando KPIs operacionais, régua de severidade, linha do tempo, técnicas MITRE ATT&CK, ranking de atacantes e triagem de telemetria.*
-
-![Painel MITRE ATT&CK no Wazuh Dashboard](imagens/dashboard/wazuh-mitre-dashboard-dark.png)
-*Figura: Matriz e distribuição analítica de táticas e técnicas do MITRE ATT&CK observadas durante as simulações.*
-
-![Visão Geral de Incidentes e Agentes](imagens/dashboard/wazuh-overview-kpi-dark.png)
-*Figura: Indicadores operacionais (KPIs) com 100% de disponibilidade dos agentes e severidades correlacionadas.*
+*Figura: Visão unificada com KPIs operacionais, régua de severidade, linha do tempo de incidentes, técnicas MITRE ATT&CK e ranking de atacantes.*
 
 ---
 
